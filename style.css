@@ -93,3 +93,14 @@ nav a {
     text-decoration: none;
     font-size: 0.9rem;
 }
+.about-section {
+    padding: 80px 20px;
+    text-align: center;
+    background-color: #0e0d0d; /* O el color oscuro que prefieras */
+}
+
+.about-content {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.8;
+}
