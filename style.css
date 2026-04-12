@@ -118,13 +118,22 @@ nav a {
     gap: 40px;
 }
 
+/* Esto controlará el tamaño y la forma de tu foto */
 .profile-img {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    border: 4px solid #00d4ff;
-    object-fit: cover;
-    box-shadow: 0 0 20px rgba(0, 212, 255, 0.4);
+    width: 180px;      /* Tamaño fijo de ancho */
+    height: 180px;     /* Tamaño fijo de alto */
+    border-radius: 50%; /* La hace completamente circular */
+    object-fit: cover;  /* Evita que la foto se estire o se vea rara */
+    border: 4px solid #00d4ff; /* El borde azul cyan */
+    box-shadow: 0 0 15px rgba(0, 212, 255, 0.5); /* Un brillo suave alrededor */
+    margin: 20px auto;  /* La centra y le da espacio */
+    display: block;     /* Asegura que respete los márgenes */
+}
+
+/* Contenedor opcional para centrar todo en la sección */
+.profile-image-container {
+    text-align: center;
+    width: 100%;
 }
 
 .skills-grid {
