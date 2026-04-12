@@ -179,3 +179,59 @@ footer { text-align: center; padding: 40px; border-top: 1px solid #334155; }
     .hero h1 { font-size: 2rem; }
     .hero { padding: 60px 0; }
 }
+/* EdwinBot Styles */
+#chat-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 2000;
+}
+
+#chat-trigger {
+    background: var(--accent-color);
+    color: var(--bg-color);
+    border: none;
+    padding: 15px 25px;
+    border-radius: 50px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(56, 189, 248, 0.4);
+}
+
+#chat-window {
+    display: none; /* Se oculta por defecto */
+    width: 320px;
+    height: 450px;
+    background: var(--card-bg);
+    border: 1px solid var(--accent-color);
+    border-radius: 15px;
+    flex-direction: column;
+    overflow: hidden;
+    margin-bottom: 10px;
+}
+
+#chat-header {
+    background: var(--accent-color);
+    color: var(--bg-color);
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+#chat-messages {
+    flex: 1;
+    padding: 15px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-size: 0.9rem;
+}
+
+.bot-msg { background: #334155; padding: 8px 12px; border-radius: 10px; align-self: flex-start; }
+.user-msg { background: var(--accent-color); color: var(--bg-color); padding: 8px 12px; border-radius: 10px; align-self: flex-end; }
+
+#chat-input-area { padding: 10px; display: flex; gap: 5px; border-top: 1px solid #334155; }
+#user-input { flex: 1; background: #0f172a; border: 1px solid #334155; color: white; padding: 5px; border-radius: 5px; }
+#send-btn { background: var(--accent-color); border: none; padding: 5px 10px; border-radius: 5px; cursor: pointer; }
