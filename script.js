@@ -1,7 +1,33 @@
-const API_KEY = "AIzaSyB3wwkLIVOfKwMCe4d-jcCPqz03W3Rb11c"; // 
+// 1. Definición de Elementos (¡Esto te faltaba!)
+const chatTrigger = document.getElementById('chat-trigger');
+const chatWindow = document.getElementById('chat-window');
+const closeChat = document.getElementById('close-chat');
+const sendBtn = document.getElementById('send-btn');
+const userInput = document.getElementById('user-input');
+const chatMessages = document.getElementById('chat-messages');
 
+const API_KEY = "AIzaSyB3wwkLIVOfKwMCe4d-jcCPqz03W3Rb11c"; 
+
+// 2. Funciones de Apertura y Cierre (¡Esto también te faltaba!)
+chatTrigger.onclick = () => {
+    chatWindow.style.display = 'flex';
+};
+
+closeChat.onclick = () => {
+    chatWindow.style.display = 'none';
+};
+
+// 3. Función para añadir mensajes visualmente
+function addMessage(text, type) {
+    const msg = document.createElement('div');
+    msg.className = type === 'user' ? 'user-msg' : 'bot-msg';
+    msg.innerText = text;
+    chatMessages.appendChild(msg);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+// 4. Lógica de Gemini
 async function getBotResponse(userInput) {
-    // Definimos la personalidad de tu bot para que sepa quién eres
     const promptContext = `
         Eres EdwinBot, el asistente inteligente de Edwin Pérez Fula. 
         Tu misión es responder preguntas de reclutadores basándote en su perfil:
@@ -27,24 +53,24 @@ async function getBotResponse(userInput) {
         return data.candidates[0].content.parts[0].text;
     } catch (error) {
         console.error("Error con Gemini:", error);
-        return "Lo siento, mi conexión con la red neuronal de Edwin falló. Por favor, contáctalo directamente.";
+        return "Lo siento, mi conexión falló. Puedes contactar a Edwin al 3112023233.";
     }
 }
 
-// Actualiza tu evento de envío para manejar la promesa (async)
+// 5. Evento de Envío
 sendBtn.onclick = async () => {
     const text = userInput.value;
     if (text) {
         addMessage(text, 'user');
         userInput.value = '';
         
-        // Indicador de "Escribiendo..."
-        const loadingMsg = "Escribiendo...";
-        addMessage(loadingMsg, 'bot');
+        // Mensaje de espera
+        addMessage("Escribiendo...", 'bot');
         
         const response = await getBotResponse(text);
         
-        // Reemplazar el mensaje de carga con la respuesta real
-        chatMessages.lastElementChild.innerText = response;
+        // Actualizar el último mensaje del bot con la respuesta de Gemini
+        const lastMsg = chatMessages.lastElementChild;
+        lastMsg.innerText = response;
     }
 };
